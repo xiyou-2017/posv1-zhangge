@@ -17,3 +17,27 @@ let buildItems=(inputs)=>{
   return itemCount;
 }
 
+let buildItemSubtotals=(itemCount)=>{
+  return itemCount.map(cartItem=>{
+    let promotionType=getPromotionType(cartItem);
+    let {subtotal,itemDiscount}=getDiscount(cartItem,promotionType);
+    return {cartItem,subtotal,itemDiscount};
+  })
+}
+
+let getPromotionType=(cartItem)=>{
+  let promotions=loadPromotions();
+  let promotion=promotions.find(promotion=>promotion.barcodes.includes(cartItem.item.barcode));
+  return promotion?promotion.type:' ';
+}
+
+let getDiscount=(cartItem,promotionType)=>{
+  let freeCount=0;
+  if(promotionType=='BUY_TWO_GET_ONE_FREE'){
+    freeCount=parseInt(cartItem.count/3);
+  }
+  let itemDiscount=freeCount*cartItem.item.price;
+  let subtotal=cartItem.item.price*(cartItem.count-freeCount);
+  return {subtotal,itemDiscount};
+}
+
