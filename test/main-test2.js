@@ -1,8 +1,5 @@
-/**
- * Created by ubuntu on 17-7-25.
- */
-describe('buildItems', ()=> {
-  let inputs = [
+describe('buildItems',()=>{
+  let inputs=[
     'ITEM000001',
     'ITEM000001',
     'ITEM000001',
@@ -12,16 +9,16 @@ describe('buildItems', ()=> {
     'ITEM000005',
     'ITEM000005',
     'ITEM000005'
-  ]
-  it('should return right itemCount', ()=> {
-    const itemCount = [{
-      item: {
+  ];
+  it('should return right itemCount',()=>{
+    const itemCount=[{item:
+      {
         barcode: 'ITEM000001',
         name: '雪碧',
         unit: '瓶',
         price: 3.00
       },
-      count: 5,
+      count:5
     },
       {
         item: {
@@ -30,7 +27,7 @@ describe('buildItems', ()=> {
           unit: '斤',
           price: 15.00
         },
-        count: 2,
+        count: 2
       },
       {
         item: {
@@ -44,5 +41,4 @@ describe('buildItems', ()=> {
     ];
     expect(buildItems(inputs)).toEqual(itemCount);
   })
-
 })

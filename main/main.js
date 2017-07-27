@@ -2,7 +2,7 @@ let buildItems=(inputs)=>{
   let allItems=loadAllItems();
   let itemCount=[];
   for(let input of inputs){
-    let splitInput=input.split('-');
+    let splitInput=input.split("-");
     let barcode=splitInput[0];
     let count=parseFloat(splitInput[1]||1);
     let cartItem=itemCount.find(cartItem=>cartItem.item.barcode===barcode);
@@ -16,3 +16,4 @@ let buildItems=(inputs)=>{
   }
   return itemCount;
 }
+
